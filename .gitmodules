@@ -1,0 +1,10 @@
+[submodule "ugv_sdk"]
+	path = ugv_sdk
+	url = https://github.com/agilexrobotics/ugv_sdk.git
+[submodule "scout_ros"]
+	path = scout_ros
+	url = https://github.com/agilexrobotics/scout_ros.git
+[submodule "urg_node"]
+	path = urg_node
+	url = https://github.com/ros-drivers/urg_node.git
+	branch = melodic-devel
