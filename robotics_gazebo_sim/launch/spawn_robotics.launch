@@ -3,6 +3,7 @@
     <arg name="y" default="0.0"/>
     <arg name="z" default="0.0"/>
     <arg name="yaw" default="0.0"/>
+    <arg name="robot_namespace" default="/"/>
     <arg name="model" default="$(find robotics_description)/urdf/robot.urdf.xacro"/>
     <arg name="rvizconfig" default="$(find robotics_bringup)/rviz/local.rviz"/>
 
@@ -26,6 +27,8 @@
         scout_motor_fl_controller
         scout_motor_rl_controller
         scout_motor_rr_controller"/>
-    <node name="scout_skid_steer_controller" pkg="scout_gazebo_sim" type="scout_skid_steer_controller"/>
+    <node name="scout_skid_steer_controller" pkg="scout_gazebo_sim" type="scout_skid_steer_controller">
+        <param name="robot_namespace" type="string" value="$(arg robot_namespace)" />
+    </node>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
 </launch> 
