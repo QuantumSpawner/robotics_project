@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+    <name>robotics_gazebo_sim</name>
+    <version>0.0.0</version>
+    <description>Gazebo simulation for robotics final project</description>
+    <author email="jet22854111@gmail.com">QuantumSpanwer</author>
+    <maintainer email="jet22854111@gmail.com">QuantumSpanwer</maintainer>
+    <license>TODO</license>
+
+    <!-- build dependencies -->
+    <buildtool_depend>catkin</buildtool_depend>
+    
+    <!-- run dependencies -->
+    <run_depend>gazebo_ros</run_depend>
+    <run_depend>gazebo_ros_control</run_depend>
+    <run_depend>roslaunch</run_depend>
+    <run_depend>ros_control</run_depend>
+    <run_depend>ros_controllers</run_depend>
+    <run_depend>rviz</run_depend>
+    <run_depend>teleop_twist_keyboard</run_depend>
+
+    <run_depend>scout_gazebo_sim</run_depend>
+
+    <run_depend>robotics_bringup</run_depend>
+    <run_depend>robotics_description</run_depend>
+
+    <export>
+    </export>
+</package>

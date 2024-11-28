@@ -8,3 +8,10 @@
 	path = urg_node
 	url = https://github.com/ros-drivers/urg_node.git
 	branch = melodic-devel
+[submodule "realsense_gazebo_plugin"]
+	path = realsense_gazebo_plugin
+	url = https://github.com/m-tartari/realsense_gazebo_plugin.git
+	branch = melodic-devel
+[submodule "realsense_gazebo_description"]
+	path = realsense_gazebo_description
+	url = https://github.com/m-tartari/realsense_gazebo_description.git

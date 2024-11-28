@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+    <name>robotics_description</name>
+    <version>0.0.0</version>
+    <description>Robot description for robotics final project</description>
+    <author email="jet22854111@gmail.com">QuantumSpanwer</author>
+    <maintainer email="jet22854111@gmail.com">QuantumSpanwer</maintainer>
+    <license>TODO</license>
+
+    <!-- build dependencies -->
+    <buildtool_depend>catkin</buildtool_depend>
+    
+    <!-- run dependencies -->
+    <run_depend>joint_state_publisher_gui</run_depend>
+    <run_depend>joint_state_publisher</run_depend>
+    <run_depend>robot_state_publisher</run_depend>
+    <run_depend>roslaunch</run_depend>
+    <run_depend>rviz</run_depend>
+    <run_depend>urdf</run_depend>
+    <run_depend>xacro</run_depend>
+
+    <run_depend>realsense_gazebo_description</run_depend>
+    <run_depend>urg_node</run_depend>
+
+    <run_depend>scout_description</run_depend>
+
+    <export>
+    </export>
+</package>
