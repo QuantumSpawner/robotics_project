@@ -3,14 +3,13 @@
     <arg name="y" default="0.0"/>
     <arg name="z" default="0.0"/>
     <arg name="yaw" default="0.0"/>
-    <arg name="robot_namespace" default="/"/>
-    <arg name="model" default="$(find robotics_description)/urdf/robot.urdf.xacro"/>
-    <arg name="rvizconfig" default="$(find robotics_bringup)/rviz/local.rviz"/>
 
     <rosparam file="$(find scout_gazebo_sim)/config/scout_v2_control.yaml" command="load"/>
-    <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
 
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <include file="$(find robotics_bringup)/launch/robotics_base.launch">
+        <arg name="is_sim" value="true"/>
+    </include>
+
     <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="
         -x $(arg x)
         -y $(arg y)
@@ -19,8 +18,7 @@
         -unpause
         -urdf
         -param robot_description
-        -model robotics"
-        output="screen"/>
+        -model robotics"/>
     <node name="controller_spawner" pkg="controller_manager" type="spawner" args="
         scout_state_controller
         scout_motor_fr_controller
@@ -28,7 +26,6 @@
         scout_motor_rl_controller
         scout_motor_rr_controller"/>
     <node name="scout_skid_steer_controller" pkg="scout_gazebo_sim" type="scout_skid_steer_controller">
-        <param name="robot_namespace" type="string" value="$(arg robot_namespace)" />
+        <param name="robot_namespace" type="string" value="/"/>
     </node>
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
 </launch> 

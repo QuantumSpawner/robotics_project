@@ -29,7 +29,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/LaserScan
       Name: LaserScan
-      Topic: /scan
+      Topic: /hokuyo/scan
       Value: true
     - Class: rviz/Image
       Name: Image

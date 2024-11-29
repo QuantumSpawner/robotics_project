@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="$(find robotics_description)/urdf/materials.urdf.xacro"/>
+    <xacro:include filename="$(find robotics_description)/urdf/hokuyo.urdf.xacro"/>
 
     <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro"/>
-    <xacro:include filename="$(find urg_node)/urdf/hokuyo_ust10.urdf.xacro"/>
 
     <xacro:include filename="$(find scout_description)/urdf/scout_mini.urdf.xacro"/>
 
-    <xacro:sensor_d435i name="realsense" topics_ns="realsense" parent="front_mount"
+    <xacro:sensor_d435i parent="front_mount" name="realsense" topics_ns="realsense"
         enable_pointCloud="true"
         align_depth="true"
         unite_imu_method="false">
         <origin xyz="-0.1 0 0.25" rpy="0 0 0"/>
     </xacro:sensor_d435i>
-    <xacro:hokuyo_ust10_mount prefix="lidar" topic="scan" parent_link="front_mount">
+    <xacro:hokuyo parent="front_mount" name="hokuyo" topic_ns="hokuyo">
         <origin xyz="-0.02 0 0" rpy="0 0 0"/>
-    </xacro:hokuyo_ust10_mount>
+    </xacro:hokuyo>
 </robot>

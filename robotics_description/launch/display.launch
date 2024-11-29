@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="model" default="$(find robotics_description)/urdf/robot.urdf.xacro"/>
     <arg name="gui" default="true"/>
+    <arg name="model" default="$(find robotics_description)/urdf/robot.urdf.xacro"/>
     <arg name="rvizconfig" default="$(find robotics_description)/rviz/display.rviz"/>
 
     <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
