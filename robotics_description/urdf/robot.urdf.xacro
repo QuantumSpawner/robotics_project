@@ -8,9 +8,8 @@
     <xacro:include filename="$(find scout_description)/urdf/scout_mini.urdf.xacro"/>
 
     <xacro:sensor_d435i parent="front_mount" name="realsense" topics_ns="realsense"
-        enable_pointCloud="true"
         align_depth="true"
-        unite_imu_method="false">
+        unite_imu_method="linear_interpolation">
         <origin xyz="-0.1 0 0.25" rpy="0 0 0"/>
     </xacro:sensor_d435i>
     <xacro:hokuyo parent="front_mount" name="hokuyo" topic_ns="hokuyo">
