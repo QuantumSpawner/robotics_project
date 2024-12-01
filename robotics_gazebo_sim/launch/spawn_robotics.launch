@@ -6,7 +6,7 @@
 
     <rosparam command="load" file="$(find scout_gazebo_sim)/config/scout_v2_control.yaml"/>
 
-    <include file="$(find robotics_bringup)/launch/robotics_base.launch">
+    <include file="$(find robotics_bringup)/launch/robotics_bringup.launch">
         <arg name="enable_ekf" value="false"/>
         <arg name="is_sim" value="true"/>
     </include>

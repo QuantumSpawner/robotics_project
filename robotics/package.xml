@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>robotics</name>
+    <version>0.0.0</version>
+    <description>ROS metapackage for robotics final project</description>
+    <author email="jet22854111@gmail.com">QuantumSpanwer</author>
+    <maintainer email="jet22854111@gmail.com">QuantumSpanwer</maintainer>
+    <license>TODO</license>
+
+    <!-- build dependencies -->
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <!-- build dependencies -->
+    <build_depend>asio</build_depend>
+    
+    <!-- run dependencies -->
+    <depend>robotics_bringup</depend>
+    <depend>robotics_description</depend>
+    <depend>robotics_gazebo_sim</depend>
+    <depend>robotics_navigation</depend>
+
+    <export>
+        <metapackage/>
+    </export>
+</package>

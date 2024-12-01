@@ -1,7 +1,7 @@
 <launch>
     <arg name="enable_ekf" default="true"/>
     <arg name="is_sim" default="false"/>
-    <arg name="rvizconfig" default="$(find robotics_bringup)/rviz/local.rviz"/>
+    <arg name="rvizconfig" default="$(find robotics_bringup)/rviz/sensors.rviz"/>
 
     <group if="$(arg enable_ekf)">
         <node name="robot_localization" pkg="robot_localization" type="ekf_localization_node">
