@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
     <name>robotics_description</name>
     <version>0.0.0</version>
     <description>Robot description for robotics final project</description>
@@ -10,19 +10,19 @@
     <!-- build dependencies -->
     <buildtool_depend>catkin</buildtool_depend>
     
-    <!-- run dependencies -->
-    <run_depend>joint_state_publisher_gui</run_depend>
-    <run_depend>joint_state_publisher</run_depend>
-    <run_depend>robot_state_publisher</run_depend>
-    <run_depend>roslaunch</run_depend>
-    <run_depend>rviz</run_depend>
-    <run_depend>urdf</run_depend>
-    <run_depend>xacro</run_depend>
+    <!-- execute dependencies -->
+    <exec_depend>joint_state_publisher_gui</exec_depend>
+    <exec_depend>joint_state_publisher</exec_depend>
+    <exec_depend>robot_state_publisher</exec_depend>
+    <exec_depend>roslaunch</exec_depend>
+    <exec_depend>rviz</exec_depend>
+    <exec_depend>urdf</exec_depend>
+    <exec_depend>xacro</exec_depend>
 
-    <run_depend>realsense_gazebo_description</run_depend>
-    <run_depend>urg_node</run_depend>
+    <exec_depend>realsense_gazebo_description</exec_depend>
+    <exec_depend>urg_node</exec_depend>
 
-    <run_depend>scout_description</run_depend>
+    <exec_depend>scout_description</exec_depend>
 
     <export>
     </export>

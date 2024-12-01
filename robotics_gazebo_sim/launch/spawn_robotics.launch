@@ -4,7 +4,7 @@
     <arg name="z" default="0.0"/>
     <arg name="yaw" default="0.0"/>
 
-    <rosparam file="$(find scout_gazebo_sim)/config/scout_v2_control.yaml" command="load"/>
+    <rosparam command="load" file="$(find scout_gazebo_sim)/config/scout_v2_control.yaml"/>
 
     <include file="$(find robotics_bringup)/launch/robotics_base.launch">
         <arg name="is_sim" value="true"/>

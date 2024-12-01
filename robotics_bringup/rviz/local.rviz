@@ -9,7 +9,7 @@ Visualization Manager:
   Class: ""
   Name: root
   Global Options:
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Displays:
     - Class: rviz/Grid
@@ -27,18 +27,30 @@ Visualization Manager:
       Show Axes: false
       Show Arrows: false
       Value: true
+    - Class: rviz/Odometry
+      Name: Odometry
+      Topic: odom
+      Shape:
+        Axes Length: 1
+        Axes Radius: 0.1
+        Head Length: 0.1
+        Head Radius: 0.03
+        Shaft Length: 0.3
+        Shaft Radius: 0.015
+        Value: Arrow
+      Value: true
     - Class: rviz/LaserScan
       Name: LaserScan
-      Topic: /hokuyo/scan
+      Topic: hokuyo/scan
       Value: true
     - Class: rviz/Image
       Name: Image
-      Image Topic: /realsense/color/image_raw
+      Image Topic: realsense/color/image_raw
       Value: true
     - Class: rviz/DepthCloud
       Name: DepthCloud
-      Depth Map Topic: /realsense/aligned_depth_to_color/image_raw
-      Color Image Topic: /realsense/color/image_raw
+      Depth Map Topic: realsense/aligned_depth_to_color/image_raw
+      Color Image Topic: realsense/color/image_raw
       Value: false
   Tools:
     - Class: rviz/Interact

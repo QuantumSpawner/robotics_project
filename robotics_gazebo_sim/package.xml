@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
     <name>robotics_gazebo_sim</name>
     <version>0.0.0</version>
     <description>Gazebo simulation for robotics final project</description>
@@ -10,19 +10,17 @@
     <!-- build dependencies -->
     <buildtool_depend>catkin</buildtool_depend>
     
-    <!-- run dependencies -->
-    <run_depend>gazebo_ros</run_depend>
-    <run_depend>gazebo_ros_control</run_depend>
-    <run_depend>roslaunch</run_depend>
-    <run_depend>ros_control</run_depend>
-    <run_depend>ros_controllers</run_depend>
-    <run_depend>rviz</run_depend>
-    <run_depend>teleop_twist_keyboard</run_depend>
+    <!-- execute dependencies -->
+    <exec_depend>gazebo_ros</exec_depend>
+    <exec_depend>gazebo_ros_control</exec_depend>
+    <exec_depend>roslaunch</exec_depend>
+    <exec_depend>ros_control</exec_depend>
+    <exec_depend>ros_controllers</exec_depend>
 
-    <run_depend>scout_gazebo_sim</run_depend>
+    <exec_depend>scout_gazebo_sim</exec_depend>
 
-    <run_depend>robotics_bringup</run_depend>
-    <run_depend>robotics_description</run_depend>
+    <exec_depend>robotics_bringup</exec_depend>
+    <exec_depend>robotics_description</exec_depend>
 
     <export>
     </export>
