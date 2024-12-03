@@ -1,6 +1,9 @@
 Panels:
   - Class: rviz/Displays
     Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Sensors1
   - Class: rviz/Views
     Name: Views
   - Class: rviz/Time
@@ -27,31 +30,48 @@ Visualization Manager:
       Show Axes: false
       Show Arrows: false
       Value: true
-    - Class: rviz/Odometry
-      Name: Odometry
-      Topic: odom
-      Shape:
-        Axes Length: 1
-        Axes Radius: 0.1
-        Head Length: 0.1
-        Head Radius: 0.03
-        Shaft Length: 0.3
-        Shaft Radius: 0.015
-        Value: Arrow
-      Value: true
-    - Class: rviz/LaserScan
-      Name: LaserScan
-      Topic: hokuyo/scan
-      Value: true
-    - Class: rviz/Image
-      Name: Image
-      Image Topic: realsense/color/image_raw
-      Value: true
-    - Class: rviz/DepthCloud
-      Name: DepthCloud
-      Depth Map Topic: realsense/aligned_depth_to_color/image_raw
-      Color Image Topic: realsense/color/image_raw
-      Value: false
+    - Class: rviz/Group
+      Name: Sensors
+      Enabled: true
+      Displays:
+      - Class: rviz/Odometry
+        Name: Odometry
+        Topic: odom
+        Shape:
+          Axes Length: 1
+          Axes Radius: 0.1
+          Head Length: 0.1
+          Head Radius: 0.03
+          Shaft Length: 0.3
+          Shaft Radius: 0.015
+          Value: Arrow
+        Value: true
+      - Class: rviz_imu_plugin/Imu
+        Name: Imu
+        Topic: realsense/imu/sample
+        Acceleration properties:
+          Acc. vector scale: 0.1
+          Enable acceleration: true
+        Axes properties:
+          Axes scale: 0.3
+          Enable axes: true
+        Value: true
+      - Class: rviz/LaserScan
+        Name: LaserScan
+        Topic: hokuyo/scan
+        Style: Points
+        Color Transformer: AxisColor
+        Axis: X
+        Value: true
+      - Class: rviz/Image
+        Name: Image
+        Image Topic: realsense/color/image_raw
+        Value: true
+      - Class: rviz/DepthCloud
+        Name: DepthCloud
+        Depth Map Topic: realsense/aligned_depth_to_color/image_raw
+        Color Image Topic: realsense/color/image_raw
+        Value: false
   Tools:
     - Class: rviz/Interact
     - Class: rviz/MoveCamera

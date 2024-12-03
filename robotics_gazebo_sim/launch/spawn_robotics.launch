@@ -1,13 +1,12 @@
 <launch>
     <arg name="x" default="0.0"/>
     <arg name="y" default="0.0"/>
-    <arg name="z" default="0.0"/>
+    <arg name="z" default="0.5"/>
     <arg name="yaw" default="0.0"/>
 
     <rosparam command="load" file="$(find scout_gazebo_sim)/config/scout_v2_control.yaml"/>
 
     <include file="$(find robotics_bringup)/launch/robotics_bringup.launch">
-        <arg name="enable_ekf" value="false"/>
         <arg name="is_sim" value="true"/>
     </include>
 

@@ -4,6 +4,8 @@ world_frame: odom
 
 two_d_mode: true
 
+predict_to_current_time: true
+
 frequency: 50
 
 odom0: scout/odom_covar
@@ -21,6 +23,6 @@ imu0_config: [false, false, false,
               false, false, false,
               true, true, true,
               false, false, false]
-imu0_differential: true
+imu0_relative: true
 imu0_queue_size: 10
 imu0_remove_gravitational_acceleration: true

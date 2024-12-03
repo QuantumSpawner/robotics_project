@@ -3,7 +3,6 @@ services:
     build: .
     image: robotics
     container_name: robotics
-    hostname: ros-noetic
     user: docker:docker
     group_add:
       - audio
@@ -20,8 +19,10 @@ services:
       - .:/home/docker/ws/src
     tmpfs:
       - /tmp
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     tty: true
     stdin_open: true
+    network_mode: host
+    device_cgroup_rules:
+      - "c 81:* rmw"
+      - "c 189:* rmw"
     privileged: true
