@@ -9,15 +9,12 @@
 
     <!-- build dependencies -->
     <buildtool_depend>catkin</buildtool_depend>
-
-    <!-- build dependencies -->
-    <build_depend>asio</build_depend>
     
     <!-- run dependencies -->
-    <depend>robotics_bringup</depend>
-    <depend>robotics_description</depend>
-    <depend>robotics_gazebo_sim</depend>
-    <depend>robotics_navigation</depend>
+    <exec_depend>robotics_bringup</exec_depend>
+    <exec_depend>robotics_description</exec_depend>
+    <exec_depend>robotics_gazebo_sim</exec_depend>
+    <exec_depend>robotics_navigation</exec_depend>
 
     <export>
         <metapackage/>

@@ -4,10 +4,13 @@
     <arg name="z" default="0.5"/>
     <arg name="yaw" default="0.0"/>
 
+    <arg name="visualize_sensors" default="true"/>
+
     <rosparam command="load" file="$(find scout_gazebo_sim)/config/scout_v2_control.yaml"/>
 
     <include file="$(find robotics_bringup)/launch/robotics_bringup.launch">
         <arg name="is_sim" value="true"/>
+        <arg name="visualize_sensors" value="$(arg visualize_sensors)"/>
     </include>
 
     <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="

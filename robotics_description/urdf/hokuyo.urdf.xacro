@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="hokuyo" params="parent
-        name:=lidar
-        topic_ns:=lidar
+        name:=laser
+        topic_ns:=laser
 
         min_angle:=-1.5707963
         max_angle:=1.5707963
