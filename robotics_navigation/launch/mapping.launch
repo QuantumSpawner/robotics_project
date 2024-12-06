@@ -1,0 +1,9 @@
+<launch>
+    <arg name="scan_topic" default="hokuyo/scan"/>
+    
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
+        <rosparam command="load" file="$(find robotics_navigation)/config/gmapping.yaml"/>
+        
+        <remap from="scan" to="$(arg scan_topic)"/>
+    </node>
+</launch>

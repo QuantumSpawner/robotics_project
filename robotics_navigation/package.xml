@@ -9,17 +9,12 @@
 
     <!-- build dependencies -->
     <buildtool_depend>catkin</buildtool_depend>
-
-    <!-- general dependencies -->
-    <depend>nav_msgs</depend>
-    <depend>roscpp</depend>
     
     <!-- execute dependencies -->
+    <exec_depend>navigation</exec_depend>
     <exec_depend>roslaunch</exec_depend>
     <exec_depend>rviz</exec_depend>
-    <exec_depend>slam_toolbox</exec_depend>
-
-    <exec_depend>robotics_bringup</exec_depend>
+    <exec_depend>slam_gmapping</exec_depend>
 
     <export>
     </export>
