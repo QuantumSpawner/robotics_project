@@ -1,31 +1,46 @@
 <launch>
     <arg name="enable_ekf" default="true"/>
+    <arg name="enable_camera" default="true"/>
     <arg name="is_sim" default="false"/>
+    <arg name="visualize_sensors" default="true"/>
     <arg name="rvizconfig" default="$(find robotics_bringup)/rviz/sensors.rviz"/>
 
     <group if="$(arg enable_ekf)">
-        <node name="robot_localization" pkg="robot_localization" type="ekf_localization_node">
-            <rosparam command="load" file="$(find robotics_bringup)/config/localization.yaml"/>
+        <node name="ekf" pkg="robot_localization" type="ekf_localization_node">
+            <rosparam command="load" file="$(find robotics_bringup)/config/ekf.yaml"/>
 
             <remap from="odometry/filtered" to="odom"/>
         </node>
-        <node name="odom_covariance_node" pkg="robotics_bringup" type="odom_covariance_node">
+        <node name="scout_odom_covariance_node" pkg="robotics_bringup" type="odom_covariance_node">
             <param name="input_odom_topic" type="string" value="scout/odom"/>
             <param name="output_odom_topic" type="string" value="scout/odom_covar"/>
         </node>
     </group>
 
     <group unless="$(arg is_sim)">
-        <include file="$(find urg_node)/launch/urg_lidar.launch"/>
-        <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <include if="$(arg enable_camera)" file="$(find realsense2_camera)/launch/rs_camera.launch">
             <arg name="camera" value="realsense"/>
             <arg name="align_depth" value="true"/>
-            <arg name="enable_gyro" value="true"/>
-            <arg name="enable_accel" value="true"/>
-            <arg name="unite_imu_method" value="linear_interpolation"/>
+            <!-- realsense imu does not work in ros1 -->
+            <!-- <arg name="enable_gyro" value="true"/> -->
+            <!-- <arg name="enable_accel" value="true"/> -->
+            <!-- <arg name="unite_imu_method" value="linear_interpolation"/> -->
             <arg name="publish_tf" value="false"/>
             <arg name="publish_odom_tf" value="false"/>
         </include>
+
+        <node name="urg_node" pkg="urg_node" type="urg_node">
+            <param name="frame_id" value="hokuyo"/>
+            <param name="angle_min" value="-1.5707963"/>
+            <param name="angle_max" value="1.5707963"/>
+
+            <remap from="scan" to="hokuyo/scan"/>
+        </node>
+        <node name="imu" pkg="witmotion_imu" type="witmotion_ros_node">
+            <rosparam command="load" file="$(find robotics_bringup)/config/imu.yaml"/>
+            <param name="port" value="/dev/ttyUSB0"/>
+            <param name="baud_rate" value="9600"/>
+        </node>
     </group>
 
     <include file="$(find robotics_description)/launch/description.launch"/>
@@ -41,5 +56,10 @@
 
         <remap unless="$(arg enable_ekf)" from="scout/odom" to="odom"/>
     </node>
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
+    <!-- <node name="visual_odometry" pkg="viso2_ros" type="mono_odometer">
+        <param name="publish_tf" value="false"/>
+
+        <remap from="/image" to="realsense/color/image_raw"/>
+    </node> -->
+    <node if="$(arg visualize_sensors)" name="rviz_sensors" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
 </launch>

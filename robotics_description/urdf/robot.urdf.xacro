@@ -2,17 +2,20 @@
 <robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="$(find robotics_description)/urdf/materials.urdf.xacro"/>
     <xacro:include filename="$(find robotics_description)/urdf/hokuyo.urdf.xacro"/>
+    <xacro:include filename="$(find robotics_description)/urdf/cmp10a.urdf.xacro"/>
 
     <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro"/>
 
     <xacro:include filename="$(find scout_description)/urdf/scout_mini.urdf.xacro"/>
 
-    <xacro:sensor_d435i parent="front_mount" name="realsense" topics_ns="realsense"
-        align_depth="true"
-        unite_imu_method="linear_interpolation">
-        <origin xyz="-0.04 0 0.25" rpy="0 0 0"/>
-    </xacro:sensor_d435i>
     <xacro:hokuyo parent="front_mount" name="hokuyo" topic_ns="hokuyo">
         <origin xyz="-0.02 0 0" rpy="0 0 0"/>
     </xacro:hokuyo>
+    <xacro:sensor_d435i parent="front_mount" name="realsense" topics_ns="realsense"
+        align_depth="true">
+        <origin xyz="-0.04 0 0.25" rpy="0 0 0"/>
+    </xacro:sensor_d435i>
+    <xacro:cmp10a parent="front_mount" name="cmp10a" topic_ns="cmp10a">
+        <origin xyz="-0.08 0 0.25" rpy="0 0 0"/>
+    </xacro:cmp10a>
 </robot>

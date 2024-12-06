@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="cmp10a" params="parent
+        name:=imu
+        topic_ns:=imu
+
+        update_rate:=10
+
+        *origin">
+        <link name="${name}">
+            <inertial>
+                <mass value="0.054" />
+                <origin xyz="0 0 0.005" />
+                <inertia ixx="${0.0833333 * 0.054 * (0.06 * 0.06 + 0.01 * 0.01)}" ixy="0.0" ixz="0.0"
+                    iyy="${0.0833333 * 0.054 * (0.05 * 0.05 + 0.01 * 0.01)}" iyz="0.0"
+                    izz="${0.0833333 * 0.054 * (0.05 * 0.05 + 0.06 * 0.06)}"/>
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0.005" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.05 0.06 0.01"/>
+                </geometry>
+                <material name="dark_grey"/>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0.005" rpy="0 0 0"/>
+                <geometry>
+                        <box size="0.05 0.06 0.01"/>
+                </geometry>
+            </collision>
+        </link>
+        <gazebo reference="${name}">
+            <sensor name="${name}" type="imu">
+                <pose>0 0 0 0 0 0</pose>
+                <topic>${topic_ns}/imu</topic>
+                <update_rate>${update_rate}</update_rate>
+                <plugin name="{name}" filename="libgazebo_ros_imu_sensor.so">
+                    <topicName>${topic_ns}/imu</topicName>
+                    <bodyName>${name}</bodyName>
+                    <frameName>${name}</frameName>
+                    <updateRateHZ>${update_rate}</updateRateHZ>
+                    <gaussianNoise>0.01</gaussianNoise>
+                    <xyzOffset>0 0 0</xyzOffset>
+                    <rpyOffset>0 0 0</rpyOffset>
+                </plugin>
+            </sensor>
+            <material>Gazebo/DarkGrey</material>
+        </gazebo>
+        <joint name="${name}_joint" type="fixed">
+            <xacro:insert_block name="origin"/>
+            <parent link="${parent}"/>
+            <child link="${name}"/>
+        </joint>
+    </xacro:macro>
+</robot>

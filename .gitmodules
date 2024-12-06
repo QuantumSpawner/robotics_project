@@ -15,3 +15,6 @@
 [submodule "realsense_gazebo_description"]
 	path = realsense_gazebo_description
 	url = https://github.com/m-tartari/realsense_gazebo_description.git
+[submodule "witmotion_IMU_ros"]
+	path = witmotion_IMU_ros
+	url = https://github.com/ElettraSciComp/witmotion_IMU_ros

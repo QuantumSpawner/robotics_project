@@ -40,19 +40,19 @@ OdomCovariance::OdomCovariance(std::shared_ptr<ros::NodeHandle>& nh,
   private_nh_->param<std::string>("output_odom_topic", output_odom_topic,
                                   std::string("odom_covar"));
 
-  private_nh_->param<double>("pos_x", pose_covar_matrix_[0], 0.1);
-  private_nh_->param<double>("pos_y", pose_covar_matrix_[7], 0.1);
-  private_nh_->param<double>("pos_z", pose_covar_matrix_[14], 99999.0);
-  private_nh_->param<double>("pos_raw", pose_covar_matrix_[21], 99999.0);
-  private_nh_->param<double>("pos_pitch", pose_covar_matrix_[28], 99999.0);
+  private_nh_->param<double>("pos_x", pose_covar_matrix_[0], 0.5);
+  private_nh_->param<double>("pos_y", pose_covar_matrix_[7], 0.5);
+  private_nh_->param<double>("pos_z", pose_covar_matrix_[14], 100000.0);
+  private_nh_->param<double>("pos_raw", pose_covar_matrix_[21], 100000.0);
+  private_nh_->param<double>("pos_pitch", pose_covar_matrix_[28], 100000.0);
   private_nh_->param<double>("pos_yaw", pose_covar_matrix_[35], 0.1);
 
-  private_nh_->param<double>("twist_x", twist_covar_matrix_[0], 0.1);
-  private_nh_->param<double>("twist_y", twist_covar_matrix_[7], 0.1);
-  private_nh_->param<double>("twist_z", twist_covar_matrix_[14], 99999.0);
-  private_nh_->param<double>("twist_raw", twist_covar_matrix_[21], 99999.0);
-  private_nh_->param<double>("twist_pitch", twist_covar_matrix_[28], 99999.0);
-  private_nh_->param<double>("twist_yaw", twist_covar_matrix_[35], 0.1);
+  private_nh_->param<double>("twist_x", twist_covar_matrix_[0], 0.05);
+  private_nh_->param<double>("twist_y", twist_covar_matrix_[7], 0.05);
+  private_nh_->param<double>("twist_z", twist_covar_matrix_[14], 100000.0);
+  private_nh_->param<double>("twist_raw", twist_covar_matrix_[21], 100000.0);
+  private_nh_->param<double>("twist_pitch", twist_covar_matrix_[28], 100000.0);
+  private_nh_->param<double>("twist_yaw", twist_covar_matrix_[35], 0.01);
 
   odom_sub_ =
       nh_->subscribe(input_odom_topic, 10, &OdomCovariance::onOdom, this);

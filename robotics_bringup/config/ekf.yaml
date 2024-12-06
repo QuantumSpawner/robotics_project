@@ -17,12 +17,12 @@ odom0_config: [false, false, false,
 odom0_differential: false
 odom0_queue_size: 10
 
-imu0: realsense/imu/sample
+imu0: cmp10a/imu
 imu0_config: [false, false, false,
               true, true, true,
               false, false, false,
               true, true, true,
-              false, false, false]
+              true, true, false]
 imu0_relative: true
 imu0_queue_size: 10
 imu0_remove_gravitational_acceleration: true

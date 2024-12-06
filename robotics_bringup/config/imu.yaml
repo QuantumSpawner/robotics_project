@@ -1,0 +1,20 @@
+imu_publisher:
+  topic_name: cmp10a/imu
+  frame_id: cmp10a
+  use_native_orientation: false
+  measurements:
+    acceleration:
+      enabled: true
+      covariance: [ 0.0088,    0,       0,
+                    0,         0.0550,  0,
+                    0,         0,       0.0267 ]
+    angular_velocity:
+      enabled: true
+      covariance: [ 0.1199,    0,       0,
+                    0,         0.5753,  0,
+                    0,         0,       0.0267 ]
+    orientation:
+      enabled: true
+      covariance: [ 0.0190,    0,       0,
+                    0,         0.0120,  0,
+                    0,         0,       0.0107 ]
