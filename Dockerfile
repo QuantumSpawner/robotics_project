@@ -16,6 +16,11 @@ RUN apt-get update && apt-get upgrade -y \
     vim \
     wget
 
+# install dependencies using rosdep
+COPY ./ /tmp/src
+RUN . /opt/ros/${ROS_DISTRO}/setup.sh \
+    && rosdep install --from-paths /tmp/src --ignore-src -r -y
+
 # adding user "docker" and add it to sudo group
 # password "docker" for root and user "docker"
 RUN useradd --create-home --shell /bin/bash docker \
@@ -37,6 +42,7 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh \
 
 # copy and modify .bashrc for user "docker"
 RUN cp /etc/skel/.bashrc ~ \
+    && echo "export PATH=${PATH}/~/.local/bin" >> ~/.bashrc \
     && echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc \
     && echo "source ~/ws/devel/setup.bash" >> ~/.bashrc
 

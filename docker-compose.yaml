@@ -1,8 +1,8 @@
 services:
   ros:
     build: .
-    image: robotics
-    container_name: robotics
+    image: robotics:ros
+    container_name: robotics-ros
     user: docker:docker
     group_add:
       - audio
