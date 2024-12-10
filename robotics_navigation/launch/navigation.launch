@@ -1,0 +1,20 @@
+<launch>
+    <!-- <arg name="map" default=""/> -->
+    <arg name="map" default="$(find robotics_navigation)/maps/playpen"/>
+    <arg name="visualize_navigation" default="true"/>
+    <arg name="rvizconfig" default="$(find robotics_navigation)/rviz/navigation.rviz"/>
+
+    <arg if="$(eval map != '')" name="slam_mode" value="localization"/>
+    <arg unless="$(eval map != '')" name="slam_mode" value="mapping"/>
+
+    <include file="$(find robotics_navigation)/launch/move_base.launch"/>
+
+    <node name="slam_toolbox" pkg="slam_toolbox" type="async_slam_toolbox_node">
+        <rosparam command="load" file="$(find robotics_navigation)/config/slam_toolbox.yaml"/>
+        <param if="$(eval map != '')" name="map_file_name" value="$(arg map)"/>
+        <param if="$(eval map != '')" name="map_start_pose" value="[0.0 0.0 0.0]"/>
+
+        <remap from="/scan" to="/hokuyo/scan"/>
+    </node>
+    <node if="$(arg visualize_navigation)" name="rviz_navigation" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
+</launch>

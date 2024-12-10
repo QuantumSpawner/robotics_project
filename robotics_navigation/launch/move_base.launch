@@ -1,8 +1,6 @@
 <launch>
     <arg name="base_global_planner" default="global_planner/GlobalPlanner"/>
     <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
-    <arg name="visualize_navigation" default="true"/>
-    <arg name="rvizconfig" default="$(find robotics_navigation)/rviz/navigation.rviz"/>
 
     <node name="move_base" pkg="move_base" type="move_base">
         <rosparam command="load" file="$(find robotics_navigation)/config/planner.yaml"/>
@@ -19,5 +17,4 @@
         <param name="local_costmap/width" value="2.0"/>
         <param name="local_costmap/height" value="2.0"/>
     </node>
-    <node if="$(arg visualize_navigation)" name="rviz_navigation" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
 </launch>

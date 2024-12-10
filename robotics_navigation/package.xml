@@ -14,7 +14,9 @@
     <exec_depend>navigation</exec_depend>
     <exec_depend>roslaunch</exec_depend>
     <exec_depend>rviz</exec_depend>
-    <exec_depend>slam_gmapping</exec_depend>
+    <exec_depend>slam_toolbox</exec_depend>
+    <exec_depend>slam_toolbox_rviz</exec_depend>
+    <exec_depend>teleop_twist_keyboard</exec_depend>
 
     <export>
     </export>

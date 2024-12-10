@@ -1,0 +1,7 @@
+<launch>
+    <node name="slam_toolbox" pkg="slam_toolbox" type="async_slam_toolbox_node">
+        <rosparam command="load" file="$(find robotics_navigation)/config/slam_toolbox.yaml"/>
+
+        <remap from="/scan" to="/hokuyo/scan"/>
+    </node>
+</launch>

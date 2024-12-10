@@ -26,9 +26,10 @@ Visualization Manager:
     Value: true
   - Class: rviz/TF
     Name: TF
-    Show Names: false
-    Show Axes: false
-    Show Arrows: false
+    Show Names: true
+    Show Axes: true
+    Show Arrows: true
+    Filter (whitelist): "(odom|base_link)"
     Value: true
   - Class: rviz/Group
     Name: Sensors
