@@ -101,7 +101,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Path
       Name: Global Plan
-      Topic: move_base/NavfnROS/plan
+      Topic: move_base/GlobalPlanner/plan
       Color: 25; 255; 0
       Value: true
     - Class: rviz/Path

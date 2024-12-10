@@ -1,5 +1,4 @@
 imu_publisher:
-  topic_name: cmp10a/imu
   frame_id: cmp10a
   use_native_orientation: false
   measurements:

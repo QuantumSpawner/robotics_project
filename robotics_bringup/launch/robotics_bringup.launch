@@ -36,10 +36,12 @@
 
             <remap from="scan" to="hokuyo/scan"/>
         </node>
-        <node name="imu" pkg="witmotion_imu" type="witmotion_ros_node">
+        <node name="imu" pkg="witmotion_ros" type="witmotion_ros_node">
             <rosparam command="load" file="$(find robotics_bringup)/config/imu.yaml"/>
             <param name="port" value="/dev/ttyUSB0"/>
             <param name="baud_rate" value="9600"/>
+
+            <remap from="imu/imu" to="cmp10a/imu"/>
         </node>
     </group>
 
@@ -56,10 +58,15 @@
 
         <remap unless="$(arg enable_ekf)" from="scout/odom" to="odom"/>
     </node>
-    <!-- <node name="visual_odometry" pkg="viso2_ros" type="mono_odometer">
+    <!-- <node name="visual_odometry" pkg="viso2_ros" type="stereo_odometer" output="screen">
         <param name="publish_tf" value="false"/>
 
-        <remap from="/image" to="realsense/color/image_raw"/>
+        <remap from="stereo" to="realsense"/>
+        <remap from="image" to="image_rect_raw"/>
+        <remap from="/realsense/left/image_rect_raw" to="realsense/infra1/image_rect_raw"/>
+        <remap from="/realsense/left/camera_info" to="realsense/infra2/camera_info"/>
+        <remap from="/realsense/right/image_rect_raw" to="realsense/infra2/image_rect_raw"/>
+        <remap from="/realsense/right/camera_info" to="realsense/infra2/camera_info"/>
     </node> -->
     <node if="$(arg visualize_sensors)" name="rviz_sensors" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
 </launch>

@@ -42,6 +42,7 @@
                     <gaussianNoise>0.01</gaussianNoise>
                     <xyzOffset>0 0 0</xyzOffset>
                     <rpyOffset>0 0 0</rpyOffset>
+                    <initialOrientationAsReference>false</initialOrientationAsReference>
                 </plugin>
             </sensor>
             <material>Gazebo/DarkGrey</material>
