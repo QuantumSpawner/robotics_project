@@ -1,0 +1,10 @@
+<launch>
+    <include file="$(find robotics_bringup)/launch/robotics_bringup.launch">
+        <arg name="visualize_sensors" value="false"/>
+    </include>
+    <include file="$(find robotics_navigation)/launch/navigation.launch">
+        <arg name="map" value="$(find robotics_navigation)/maps/412"/>
+    </include>
+
+    <node name="http_api" pkg="robotics" type="http_api.py"/>
+</launch>

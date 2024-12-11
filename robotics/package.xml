@@ -2,7 +2,7 @@
 <package format="2">
     <name>robotics</name>
     <version>0.0.0</version>
-    <description>ROS metapackage for robotics final project</description>
+    <description>Main package for robotics final project</description>
     <author email="jet22854111@gmail.com">QuantumSpanwer</author>
     <maintainer email="jet22854111@gmail.com">QuantumSpanwer</maintainer>
     <license>TODO</license>
@@ -10,13 +10,18 @@
     <!-- build dependencies -->
     <buildtool_depend>catkin</buildtool_depend>
     
-    <!-- run dependencies -->
+    <!-- execute dependencies -->
+    <exec_depend>actionlib</exec_depend>
+    <exec_depend>python3-flask</exec_depend>
+    <exec_depend>python3-requests</exec_depend>
+    <exec_depend>roslaunch</exec_depend>
+    <exec_depend>rospy</exec_depend>
+
     <exec_depend>robotics_bringup</exec_depend>
     <exec_depend>robotics_description</exec_depend>
     <exec_depend>robotics_gazebo_sim</exec_depend>
     <exec_depend>robotics_navigation</exec_depend>
 
     <export>
-        <metapackage/>
     </export>
 </package>
