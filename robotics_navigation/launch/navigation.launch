@@ -1,13 +1,12 @@
 <launch>
-    <!-- <arg name="map" default=""/> -->
-    <arg name="map" default="$(find robotics_navigation)/maps/playpen"/>
+    <arg name="map" default=""/>
+    <!-- <arg name="map" default="$(find robotics_navigation)/maps/playpen"/> -->
     <arg name="visualize_navigation" default="true"/>
     <arg name="rvizconfig" default="$(find robotics_navigation)/rviz/navigation.rviz"/>
 
-    <arg if="$(eval map != '')" name="slam_mode" value="localization"/>
-    <arg unless="$(eval map != '')" name="slam_mode" value="mapping"/>
-
-    <include file="$(find robotics_navigation)/launch/move_base.launch"/>
+    <include file="$(find robotics_navigation)/launch/move_base.launch">
+        <arg name="static_map" value="$(eval map != '')"/>
+    </include>
 
     <node name="slam_toolbox" pkg="slam_toolbox" type="async_slam_toolbox_node">
         <rosparam command="load" file="$(find robotics_navigation)/config/slam_toolbox.yaml"/>

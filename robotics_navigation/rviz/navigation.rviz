@@ -92,6 +92,7 @@ Visualization Manager:
       Name: Global Costmap
       Topic: move_base/global_costmap/costmap
       Color Scheme: costmap
+      Alpha: 0.2
       Draw Behind: true
       Value: true
     - Class: rviz/Map

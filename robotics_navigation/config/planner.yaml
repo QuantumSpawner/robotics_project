@@ -1,5 +1,5 @@
-planner_frequency: 2.0
-controller_frequency: 10.0
+planner_frequency: 1.0
+controller_frequency: 5.0
 
 recovery_behaviour_enabled: true
 
