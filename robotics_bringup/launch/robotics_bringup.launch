@@ -43,6 +43,7 @@
 
             <remap from="imu/imu" to="cmp10a/imu"/>
         </node>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
     </group>
 
     <include file="$(find robotics_description)/launch/description.launch"/>
