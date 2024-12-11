@@ -12,6 +12,8 @@ services:
     environment:
       DISPLAY: ${DISPLAY}
       QT_X11_NO_MITSHM: 1
+      NVIDIA_DRIVER_CAPABILITIES: all
+      NVIDIA_VISIBLE_DEVICES: all
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /dev:/dev
@@ -19,10 +21,11 @@ services:
       - .:/home/docker/ws/src
     tmpfs:
       - /tmp
-    tty: true
-    stdin_open: true
+    runtime: nvidia
+    privileged: true
     network_mode: host
     device_cgroup_rules:
       - "c 81:* rmw"
       - "c 189:* rmw"
-    privileged: true
+    tty: true
+    stdin_open: true
