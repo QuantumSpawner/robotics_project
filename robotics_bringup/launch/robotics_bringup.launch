@@ -6,8 +6,8 @@
     <arg name="rvizconfig" default="$(find robotics_bringup)/rviz/sensors.rviz"/>
 
     <group if="$(arg enable_ekf)">
-        <node name="ekf" pkg="robot_localization" type="ekf_localization_node">
-            <rosparam command="load" file="$(find robotics_bringup)/config/ekf.yaml"/>
+        <node name="ekf_localization" pkg="robot_localization" type="ekf_localization_node">
+            <rosparam command="load" file="$(find robotics_bringup)/config/ekf_localization.yaml"/>
 
             <remap from="odometry/filtered" to="odom"/>
         </node>
@@ -36,8 +36,8 @@
 
             <remap from="scan" to="hokuyo/scan"/>
         </node>
-        <node name="imu" pkg="witmotion_ros" type="witmotion_ros_node">
-            <rosparam command="load" file="$(find robotics_bringup)/config/imu.yaml"/>
+        <node name="witmotion_imu" pkg="witmotion_ros" type="witmotion_ros_node">
+            <rosparam command="load" file="$(find robotics_bringup)/config/witmotion_imu.yaml"/>
             <param name="port" value="/dev/ttyUSB0"/>
             <param name="baud_rate" value="9600"/>
 
