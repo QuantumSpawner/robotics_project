@@ -1,27 +1,33 @@
 planner_frequency: 1.0
 controller_frequency: 5.0
 
+controller_patience: 3
 recovery_behaviour_enabled: true
+recovery_behaviors:
+  - {name: reset_costmap, type: clear_costmap_recovery/ClearCostmapRecovery}
 
 GlobalPlanner:
   allow_unknown: true
-  default_tolerance: 0.2
+  default_tolerance: 0.1
 
 DWAPlannerROS:
-  acc_lim_x: 1.0
-  acc_lim_y: 0
-  acc_lim_th: 1.0
+  acc_lim_x: 0.5
+  acc_lim_y: 0.5
+  acc_lim_th: 0.5
 
-  max_vel_trans: 0.3
-  min_vel_trans: 0.1
-  max_vel_rot: 0.5
-  min_vel_rot: 0.2
+  max_vel_trans: 0.5
+  min_vel_trans: 0.05
+  max_vel_rot: 0.2
+  min_vel_rot: 0.05
 
-  max_vel_x: 0.3
-  min_vel_x: 0.0
+  max_vel_x: 0.5
+  min_vel_x: -0.05
   max_vel_y: 0
   min_vel_y: 0
 
-  yaw_goal_tolerance: 0.2
-  xy_goal_tolerance: 0.2
-  latch_xy_goal_tolerance: false
+  yaw_goal_tolerance: 0.1
+  xy_goal_tolerance: 0.15
+  latch_xy_goal_tolerance: true
+
+reset_costmap:
+  reset_distance: 0.0

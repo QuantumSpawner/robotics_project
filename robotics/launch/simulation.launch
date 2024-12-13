@@ -1,0 +1,8 @@
+<launch>
+    <include file="$(find robotics_gazebo_sim)/launch/playpen.launch">
+        <arg name="visualize_sensors" value="false"/>
+    </include>
+    <include file="$(find robotics_navigation)/launch/navigation.launch">
+        <arg name="map" value="$(find robotics_navigation)/maps/playpen"/>
+    </include>
+</launch>
