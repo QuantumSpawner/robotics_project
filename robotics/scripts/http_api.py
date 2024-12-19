@@ -12,11 +12,11 @@ import os
 
 dest = {
     1: (0, 0, 0),
-    2: (2, 0, 90),
-    3: (3.5, 0, -90),
-    4: (2, 0, 90),
-    5: (3.5, 0, -90),
-    6: (4.7, 0, 180)
+    2: (5, 0.2, -90),
+    3: (2.8, -0.2, 90),
+    4: (5, 0.2,- 90),
+    5: (2.8, -0.2, 90),
+    6: (7, 0, 180)
 }
 
 
@@ -41,35 +41,12 @@ class NavigationService:
         self._setup_routes()
 
     def _setup_routes(self):
-        self.app.route('/')(self.home)
-        self.app.route('/Navigation_shutdown',
-                       methods=['POST'])(self.Navigation_shutdown)
-        self.app.route('/Navigation_connect',
-                       methods=['POST'])(self.Navigation_connect)
-        self.app.route("/navigate2product", methods=["POST"])(self.navigate)
+        self.app.route("/navigate2product",
+                       methods=["POST"])(self.navigate2product)
         self.app.route("/navigate2stock",
                        methods=["POST"])(self.navigate2stock)
 
-    def home(self):
-        return jsonify({"message": "Navigation connected"}), 400
-
-    def Navigation_connect(self):
-        print("Navigation connected")
-        data = request.json
-        state = data.get("state")
-        if not state:
-            return jsonify({"error": "No state provided"}), 400
-        return jsonify({'status': 'success'}), 500
-
-    def Navigation_shutdown(self):
-        print("Shutting down the Navigation service...")
-        data = request.json
-        state = data.get("state")
-        if not state:
-            return jsonify({"error": "No state provided"}), 400
-        os._exit(0)
-
-    def navigate(self):
+    def navigate2product(self):
         data = request.json
         c_product = data.get("c_product")
         if not c_product:
@@ -80,12 +57,16 @@ class NavigationService:
 
         state = self.navigating(dest[c_product])
         try:
-            requests.post(f"{self.SERVER_ENDPOINT}/navigate_state",
+            requests.post(f"{self.SERVER_ENDPOINT}/navigate2product_end",
                           json={"state": state},
                           timeout=10)
-            print("success to return navigate state")
+            print("success to return navigate to product state")
         except Exception as e:
             print(f"fail to return navigate state {str(e)}")
+        return jsonify({
+            'status': 'success',
+            'message': 'Robot arrived product!'
+        }), 200
 
     def navigate2stock(self):
         data = request.json
@@ -95,13 +76,11 @@ class NavigationService:
             return
 
         state = self.navigating(dest[c_stock])
-        try:
-            requests.post(f"{self.SERVER_ENDPOINT}/navigate2stock_state",
-                          json={"state": state},
-                          timeout=10)
-            print("success to return avigate state")
-        except Exception as e:
-            print(f"fail to return avigate state {str(e)}")
+        print("success to return navigate state")
+        return jsonify({
+            'status': 'success',
+            'message': 'Robot arrived stock!'
+        }), 200
 
     def navigating(self, coord):
         x, y, yaw = coord
@@ -137,3 +116,4 @@ class NavigationService:
 
 if __name__ == "__main__":
     NavigationService().run()
+    # NavigationService().navigating(dest[1])
